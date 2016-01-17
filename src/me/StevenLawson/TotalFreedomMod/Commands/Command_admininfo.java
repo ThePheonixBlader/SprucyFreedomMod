@@ -8,7 +8,7 @@ import net.md_5.bungee.api.ChatColor;
 
 @CommandPermissions(level = AdminLevel.OP, source = SourceType.ONLY_IN_GAME, blockHostConsole = true)
 @CommandParameters(
-		description = "Close server to non-superadmins.", 
+		description = "Learn how to apply for admin.", 
 		usage = "/<command> [on | off]",
 		aliases = "ai")
 public class Command_admininfo extends TFM_Command
