@@ -861,6 +861,34 @@ public class TFM_PlayerListener implements Listener
         {
             name = ChatColor.DARK_PURPLE + name;
             TFM_PlayerData.getPlayerData(player).setTag("&8[&5Developer&8]");
+            afterNameSet(player);
+            return;
+        }
+        if (TFM_Util.EXECUTIVES.contains(player.getName()))
+        {
+        	name = ChatColor.BLUE + name;
+        	TFM_PlayerData.getPlayerData(player).setTag("&8[&9Executive&8]");
+        	afterNameSet(player);
+        	return;
+        }
+        if (TFM_Util.SYSTEMADMINS.contains(player.getName()))
+        {
+        	name = ChatColor.DARK_RED + name;
+        	TFM_PlayerData.getPlayerData(player).setTag("&8[&4System Admin&8]");
+        	afterNameSet(player);
+        	return;
+        }
+        else if (player.getName().equals("TaahThePhoenix"))
+        {
+        	player.setPlayerListName(ChatColor.DARK_PURPLE + name);
+        	TFM_PlayerData.getPlayerData(player).setTag("&8[&5Lead Developer&8]");
+        	afterNameSet(player);
+        	return;
+        }
+        else if(player.getName().equals("MrPerson660"))
+        {
+        	player.setPlayerListName(ChatColor.DARK_RED + name);
+        	TFM_PlayerData.getPlayerData(player).setTag("&8[&4Co Owner&8]");
         }
         else if (TFM_AdminList.isSuperAdmin(player))
         {
@@ -912,7 +940,11 @@ public class TFM_PlayerListener implements Listener
         }.runTaskLater(TotalFreedomMod.plugin, 20L * 1L);
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    public static void afterNameSet(final Player player)
+    {
+    }
+    	
+	@EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerPreLogin(AsyncPlayerPreLoginEvent event)
     {
         TFM_ServerInterface.handlePlayerPreLogin(event);
@@ -924,3 +956,4 @@ public class TFM_PlayerListener implements Listener
         TFM_ServerInterface.handlePlayerLogin(event);
     }
 }
+
