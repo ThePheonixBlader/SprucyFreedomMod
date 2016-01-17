@@ -2,6 +2,8 @@ package me.StevenLawson.TotalFreedomMod;
 
 import me.StevenLawson.TotalFreedomMod.Config.TFM_ConfigEntry;
 import static me.StevenLawson.TotalFreedomMod.TFM_Util.DEVELOPERS;
+import static me.StevenLawson.TotalFreedomMod.TFM_Util.SYSTEMADMINS;
+import static me.StevenLawson.TotalFreedomMod.TFM_Util.EXECUTIVES;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -16,6 +18,9 @@ public enum TFM_PlayerRank
     TELNET("a " + ChatColor.DARK_GREEN + "Super Telnet Admin", ChatColor.DARK_GREEN + "[STA]"),
     SENIOR("a " + ChatColor.LIGHT_PURPLE + "Senior Admin", ChatColor.LIGHT_PURPLE + "[SrA]"),
     OWNER("the " + ChatColor.BLUE + "Owner", ChatColor.BLUE + "[Owner]"),
+    COOWNER("the " + ChatColor.DARK_RED + "Co Owner", ChatColor.DARK_RED + "[Co Owner]"),
+    EXECUTIVE("an " + ChatColor.DARK_GREEN + "Executive", ChatColor.RED + "[Exec]"),
+    SYSTEMADMIN("a " + ChatColor.LIGHT_PURPLE + "System Administrator", ChatColor.YELLOW + "[Sys-Admin]"),
     CONSOLE("The " + ChatColor.DARK_PURPLE + "Console", ChatColor.DARK_PURPLE + "[Console]");
     private final String loginMessage;
     private final String prefix;
@@ -68,6 +73,18 @@ public enum TFM_PlayerRank
         if (DEVELOPERS.contains(sender.getName()))
         {
             return DEVELOPER;
+        }
+        if (sender.getName().equals("MrPerson660"))
+        {
+        	return COOWNER;
+        }
+        if (EXECUTIVES.contains(sender.getName()))
+        {
+        	return EXECUTIVE;
+        }
+        if (SYSTEMADMINS.contains(sender.getName()))
+        {
+        	return SYSTEMADMIN;
         }
 
         final TFM_Admin entry = TFM_AdminList.getEntryByIp(TFM_Util.getIp((Player) sender));
