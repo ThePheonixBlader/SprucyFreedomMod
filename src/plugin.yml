@@ -1,8 +1,8 @@
-name: TotalFreedomMod
+name: SprucyFreedomMod
 main: me.StevenLawson.TotalFreedomMod.TotalFreedomMod
 version: 4.3
-description: Plugin for the Total Freedom server.
+description: Plugin for the Sprucy Freedom server.
 softdepend: [BukkitTelnet, WorldEdit, Essentials]
-authors: [Madgeek1450, Prozza]
+authors: [Madgeek1450, Prozza, TaahThePhoenix]
 
 # plugin.yml is no longer used to define commands.
