@@ -17,10 +17,10 @@ public enum TFM_PlayerRank
     SUPER("a " + ChatColor.GOLD + "Super Admin", ChatColor.GOLD + "[SA]"),
     TELNET("a " + ChatColor.DARK_GREEN + "Super Telnet Admin", ChatColor.DARK_GREEN + "[STA]"),
     SENIOR("a " + ChatColor.LIGHT_PURPLE + "Senior Admin", ChatColor.LIGHT_PURPLE + "[SrA]"),
-    OWNER("the " + ChatColor.BLUE + "Owner", ChatColor.BLUE + "[Owner]"),
-    COOWNER("the " + ChatColor.DARK_RED + "Co Owner", ChatColor.DARK_RED + "[Co Owner]"),
-    EXECUTIVE("an " + ChatColor.DARK_GREEN + "Executive", ChatColor.RED + "[Exec]"),
-    SYSTEMADMIN("a " + ChatColor.LIGHT_PURPLE + "System Administrator", ChatColor.YELLOW + "[Sys-Admin]"),
+    OWNER("the " + ChatColor.DARK_RED + "Owner", ChatColor.DARK_RED + "[Owner]"),
+    COOWNER("the " + ChatColor.BLUE + "Co Owner", ChatColor.BLUE + "[Co Owner]"),
+    EXECUTIVE("an " + ChatColor.GOLD + "Executive", ChatColor.GOLD + "[Exe]"),
+    SYSTEMADMIN("a " + ChatColor.RED + "System Administrator", ChatColor.RED + "[Sys]"),
     CONSOLE("The " + ChatColor.DARK_PURPLE + "Console", ChatColor.DARK_PURPLE + "[Console]");
     private final String loginMessage;
     private final String prefix;
@@ -74,9 +74,9 @@ public enum TFM_PlayerRank
         {
             return DEVELOPER;
         }
-        if (sender.getName().equals("MrPerson660"))
+        if (COOWNERS.contains(sender.getName()))
         {
-        	return COOWNER;
+            return COOWNER;
         }
         if (EXECUTIVES.contains(sender.getName()))
         {
