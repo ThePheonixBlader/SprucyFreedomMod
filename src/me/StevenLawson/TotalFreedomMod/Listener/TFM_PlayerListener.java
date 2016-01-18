@@ -860,7 +860,7 @@ public class TFM_PlayerListener implements Listener
         if (TFM_Util.DEVELOPERS.contains(player.getName()))
         {
             name = ChatColor.DARK_PURPLE + name;
-            TFM_PlayerData.getPlayerData(player).setTag("78[&5Developer&7]");
+            TFM_PlayerData.getPlayerData(player).setTag("&7[&5Developer&7]");
             afterNameSet(player);
             return;
         }
@@ -894,8 +894,17 @@ public class TFM_PlayerListener implements Listener
         {
             if (TFM_ConfigEntry.SERVER_OWNERS.getList().contains(name))
             {
-                name = ChatColor.DARK_RED + name;
+                player.setPlayerListName(ChatColor.DARK_RED + name);
                 TFM_PlayerData.getPlayerData(player).setTag("&7[&4Owner&7]");
+                afterNameSet(player);
+                return;
+            }
+            if (TFM_ConfigEntry.SERVER_MANAGERS.getList().contains(name))
+            {
+            	player.setPlayerListName(ChatColor.GREEN + name);
+                TFM_PlayerData.getPlayerData(player).setTag("&7[&aAdmin Manager&7]");
+                afterNameSet(player);
+                return;
             }
             else if (TFM_AdminList.isSeniorAdmin(player))
             {
