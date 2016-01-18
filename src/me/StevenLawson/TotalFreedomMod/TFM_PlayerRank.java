@@ -19,7 +19,7 @@ public enum TFM_PlayerRank
     SENIOR("a " + ChatColor.LIGHT_PURPLE + "Senior Admin", ChatColor.LIGHT_PURPLE + "[SrA]"),
     OWNER("the " + ChatColor.DARK_RED + "Owner", ChatColor.DARK_RED + "[Owner]"),
     COOWNER("the " + ChatColor.BLUE + "Co Owner", ChatColor.BLUE + "[Co Owner]"),
-    EXECUTIVE("an " + ChatColor.GOLD + "Executive", ChatColor.GOLD + "[Exe]"),
+    EXECUTIVE("an " + ChatColor.GOLD + "Executive", ChatColor.GOLD + "[Exec]"),
     SYSTEMADMIN("a " + ChatColor.RED + "System Administrator", ChatColor.RED + "[Sys]"),
     CONSOLE("The " + ChatColor.DARK_PURPLE + "Console", ChatColor.DARK_PURPLE + "[Console]");
     private final String loginMessage;
@@ -76,7 +76,7 @@ public enum TFM_PlayerRank
         }
         if (sender.getName().equals("MrPerson660"))
         {
-            return COOWNER;
+            return OWNER;
         }
         if (EXECUTIVES.contains(sender.getName()))
         {
