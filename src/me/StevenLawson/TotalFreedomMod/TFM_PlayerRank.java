@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 
 public enum TFM_PlayerRank
 {
-    DEVELOPER("a " + ChatColor.DARK_PURPLE + "Developer", ChatColor.DARK_PURPLE + "[Dev]"),
+	DEVELOPER("a " + ChatColor.DARK_PURPLE + "Developer", ChatColor.DARK_PURPLE + "[Dev]"),
     IMPOSTOR("an " + ChatColor.YELLOW + ChatColor.UNDERLINE + "Impostor", ChatColor.YELLOW.toString() + ChatColor.UNDERLINE + "[IMP]"),
     NON_OP("a " + ChatColor.GREEN + "Non-OP", ChatColor.GREEN.toString()),
     OP("an " + ChatColor.RED + "OP", ChatColor.RED + "[OP]"),
@@ -21,6 +21,8 @@ public enum TFM_PlayerRank
     COOWNER("the " + ChatColor.BLUE + "Co Owner", ChatColor.BLUE + "[Co Owner]"),
     EXECUTIVE("an " + ChatColor.GOLD + "Executive", ChatColor.GOLD + "[Exec]"),
     SYSTEMADMIN("a " + ChatColor.RED + "System Administrator", ChatColor.RED + "[Sys]"),
+    ADMINMANAGER("the " + ChatColor.GREEN + "Executive Admin Manager", ChatColor.GREEN + "[Admin Manager]"),
+    LEADDEVELOPER("the " + ChatColor.DARK_PURPLE + "Lead Developer", ChatColor.DARK_PURPLE + "[L-Dev]"),
     CONSOLE("The " + ChatColor.DARK_PURPLE + "Console", ChatColor.DARK_PURPLE + "[Console]");
     private final String loginMessage;
     private final String prefix;
@@ -76,7 +78,11 @@ public enum TFM_PlayerRank
         }
         if (sender.getName().equals("MrPerson660"))
         {
-            return OWNER;
+        	return OWNER;
+        }
+        if(sender.getName().equals("TaahThePhoenix"))
+        {
+        	return LEADDEVELOPER;
         }
         if (EXECUTIVES.contains(sender.getName()))
         {
@@ -96,6 +102,10 @@ public enum TFM_PlayerRank
             if (TFM_ConfigEntry.SERVER_OWNERS.getList().contains(sender.getName()))
             {
                 return OWNER;
+            }
+            if (TFM_ConfigEntry.SERVER_MANAGERS.getList().contains(sender.getName()))
+            {
+            	return ADMINMANAGER;
             }
 
             if (entry.isSeniorAdmin())
