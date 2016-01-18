@@ -21,6 +21,9 @@ server:
   owners:
     - markbyron
     - XGreenPlayz12
+  # All players who show up as admin manager
+  managers:
+    - xMill_
 
   # URL players should appeal for bans at
   ban_url: http://sprucyfreedom.boards.net/
