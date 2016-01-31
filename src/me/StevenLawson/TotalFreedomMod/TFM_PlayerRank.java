@@ -84,6 +84,10 @@ public enum TFM_PlayerRank
         {
         	return LEADDEVELOPER;
         }
+        if(sender.getName().equals("TaahThePhoenix"))
+        {
+        	return DEVELOPER;
+        }
         if (EXECUTIVES.contains(sender.getName()))
         {
         	return EXECUTIVE;
