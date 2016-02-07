@@ -16,10 +16,12 @@ server:
     - insertname
 
   # URL players should appeal for bans at
-  ban_url: http://immafreedom.boards.eu/
+  ban_url: http://immafreedom.boards.net/
+
+# Note: Liam stop editing this, the forum's link is not boards.eu it's boards.net.
 
   # URL players should appeal for permanent bans at
-  permban_url: http://immafreedom.boards.eu/
+  permban_url: http://immafreedom.boards.net/
 
 # ForceIP configuration
 forceip:
