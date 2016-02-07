@@ -883,6 +883,13 @@ public class TFM_PlayerListener implements Listener
             afterNameSet(player);
             return;
         }
+        if (TFM_ConfigEntry.SERVER_BUILDERS.getList().contains(name))
+            {
+                player.setPlayerListName(ChatColor.AQUA + name);
+                TFM_PlayerData.getPlayerData(player).setTag("&8[&bBuilder&8]");
+                afterNameSet(player);
+                return;
+            }
         if (TFM_AdminList.isSuperAdmin(player))
         {
             if (TFM_ConfigEntry.SERVER_OWNERS.getList().contains(name))
