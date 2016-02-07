@@ -60,6 +60,7 @@ import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
+import org.bukkit.event.player.PlayerSplashEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
@@ -737,6 +738,10 @@ public class TFM_PlayerListener implements Listener
 
         playerLeave(event.getPlayer());
     }
+    @EventHandler(priority = EventPriority.NORMAL)
+    public void onPotionSplash(PotionSplashEvent event){
+        event.setCancelled(true);
+        }
 
     @EventHandler(priority = EventPriority.MONITOR)
     public void onPlayerQuit(PlayerQuitEvent event)
