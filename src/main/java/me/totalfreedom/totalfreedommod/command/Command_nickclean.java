@@ -12,7 +12,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.SUPER_ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "Essentials Interface Command - Remove illegal chatcodes from nicknames of all players on server.", usage = "/<command>", aliases = "nc")
+@CommandParameters(description = "Essentials Interface Command - Remove illegal chatcodes from nicknames of all players on server.", usage = "/<command> <player | -a>", aliases = "nc")
 public class Command_nickclean extends FreedomCommand
 {
 
@@ -23,12 +23,39 @@ public class Command_nickclean extends FreedomCommand
     @Override
     public boolean run(CommandSender sender, Player playerSender, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
     {
-        FUtil.adminAction(sender.getName(), "Cleaning all nicknames", false);
-
-        for (final Player player : server.getOnlinePlayers())
+        if (args.length == 0)
         {
+            return false;
+        }
+        if (args[0].equalsIgnoreCase("-a"))
+        {
+            FUtil.adminAction(sender.getName(), "Cleaning all nicknames", false);
+
+            for (final Player player : server.getOnlinePlayers())
+            {
+                final String playerName = player.getName();
+                final String nickName = plugin.esb.getNickname(playerName);
+                if (nickName != null && !nickName.isEmpty() && !nickName.equalsIgnoreCase(playerName))
+                {
+                    final Matcher matcher = REGEX.matcher(nickName);
+                    if (matcher.find())
+                    {
+                        final String newNickName = matcher.replaceAll("");
+                        msg(ChatColor.RESET + playerName + ": \"" + nickName + ChatColor.RESET + "\" -> \"" + newNickName + ChatColor.RESET + "\".");
+                        plugin.esb.setNickname(playerName, newNickName);
+                    }
+                }
+            }
+        } else {
+            Player player = getPlayer(args[0]);
+            if (player == null)
+            {
+                msg(PLAYER_NOT_FOUND);
+                return true;
+            }
             final String playerName = player.getName();
             final String nickName = plugin.esb.getNickname(playerName);
+            FUtil.adminAction(sender.getName(), "Cleaning " + player.getName() + "'s nickname", false);
             if (nickName != null && !nickName.isEmpty() && !nickName.equalsIgnoreCase(playerName))
             {
                 final Matcher matcher = REGEX.matcher(nickName);
@@ -39,6 +66,7 @@ public class Command_nickclean extends FreedomCommand
                     plugin.esb.setNickname(playerName, newNickName);
                 }
             }
+
         }
         return true;
     }
